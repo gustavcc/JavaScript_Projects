@@ -13,5 +13,19 @@ function removeTransition(e){
     this.classList.remove('playing');
 }
 
+
+
 const keys = document.querySelectorAll('.key');
-keys.forEach(key => key.addEventListener('transitionend', removeTransition))
+keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+
+// mobile / click button
+keys.forEach(key => key.addEventListener('click', function(e){
+    const audio = document.querySelector(`audio[id='${e.target.id}']`);
+    if (!e.target.id) {
+        if(!audio) return;
+        return;
+    }
+    audio.play();
+    audio.currentTime = 0;
+    key.classList.add('playing');
+}));
